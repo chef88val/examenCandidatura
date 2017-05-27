@@ -1,0 +1,43 @@
+<h1>{{txtfilter}}</h1>
+<div class="container-fluid ">
+  <div class="row">
+    <div class="col-md-3">
+      <label for="txtfilter">Client Finder</label>
+      
+      <!--<ul>
+        <li *ngFor="let client of _ListService.clients | clientFilter:listFilter.value">{{client.name}}</li>
+      </ul>-->
+
+      <form>
+        <table class="table table-striped">
+          <thead  class="thead-inverse">
+            <tr>
+              <th><input type="number" name="id" [(ngModel)]="filter.id"  placeholder="Id"></th>
+              <th><input type="text" name="name" [(ngModel)]="filter.name" placeholder="Name"></th>
+              <th><input type="text" name="hair_color" [(ngModel)]="filter.hair_color" placeholder="Hair color"></th>
+              <th><input type="number" name="age" [(ngModel)]="filter.age" placeholder="Year"></th>
+              <th>Image</th>
+              <th>Professions</th>
+              <th>Friends</th>
+              <!--<th><input type="text" name="professions" [(ngModel)]="filter.professions" placeholder="Professions"></th>
+              <th><input type="text" name="friends" #input [(ngModel)]="filter.friends" placeholder="Friends"></th>-->
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let cli of client  | clientFilter:filter">
+              <td>{{cli.id}}</td>
+              <td>{{cli.name}}</td>
+              <td>{{cli.hair_color}}</td>
+              <td>{{cli.age}}</td>
+              <td><img [src]="cli.thumbnail" alt="" width="100px" height="100px"></td>
+              <td><ul *ngFor="let pro of cli.professions | clientFilter:filter"><a (click)="setProfe(pro)">{{pro}}</a></ul></td>
+               <td><ul *ngFor="let fri of cli.friends"><a (click)="setFriend(fri)">{{fri}}</a></ul></td>
+             <!--<td>{{cli.professions}}</td>
+              <td>{{cli.friends}}</td>-->
+            </tr>
+          </tbody>
+        </table>
+      </form>
+    </div>
+  </div>
+</div>
